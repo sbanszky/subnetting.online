@@ -1,0 +1,147 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+---
+
+<Layout title="Subnetting Online">
+  <main class="container">
+    <div class="ipv4-container">
+      <div class="background-layer"></div>
+      <a href="https://ipv4.subnetting.online" class="ipv4 animate">IPv4</a>
+      <div class="card-container">
+        <Card 
+          title="Advanced calculator" 
+          body="Calculate subnetting with advanced options"
+          href="https://advancedcalculator4.subnetting.online"
+        />
+        <Card 
+          title="Practice IPv4 subnetting" 
+          body="Test your subnetting skills with interactive exercises"
+          href="https://practiceipv4.subnetting.online"
+        />
+      </div>
+    </div>
+    <div class="ipv6-container">
+      <div class="background-layer"></div>
+      <a href="https://ipv6.subnetting.online" class="ipv6 animate">IPv6</a>
+      <div class="card-container">
+        <Card 
+          title="Advanced calculator" 
+          body="Calculate subnetting with advanced options"
+          href="https://advancedcalculator6.subnetting.online"
+        />
+        <Card 
+          title="Practice IPv6 subnetting" 
+          body="Master IPv6 subnetting with practical challenges"
+          href="https://practiceipv6.subnetting.online"
+        />
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .container {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    width: 100%;
+    animation: fadeIn 1s ease-out;
+    position: relative;
+  }
+
+  .ipv4-container, .ipv6-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .background-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--accent-gradient);
+    opacity: 0.15;
+    z-index: 0;
+    animation: 
+      pulse 8s ease-in-out infinite alternate,
+      subtleMove 20s linear infinite;
+    background-size: 200% 200%;
+  }
+
+  .ipv4, .ipv6 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    background: transparent;
+    color: var(--green);
+    z-index: 1;
+    mix-blend-mode: screen;
+  }
+
+  .ipv4-container:hover .background-layer,
+  .ipv6-container:hover .background-layer {
+    opacity: 0.25;
+    animation: 
+      pulse 4s ease-in-out infinite alternate,
+      subtleMove 10s linear infinite;
+  }
+
+  .ipv4:hover, .ipv6:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 15px rgba(var(--accent-light), 0.5);
+  }
+
+  .animate {
+    animation: slideUp 0.8s ease-out backwards;
+  }
+
+  .ipv6.animate {
+    animation-delay: 0.2s;
+  }
+
+  .card-container {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 101;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.25; }
+  }
+
+  @keyframes subtleMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+    
+    .ipv4, .ipv6 {
+      font-size: 4rem;
+    }
+
+    .card-container {
+      bottom: 60px;
+    }
+  }
+</style>
